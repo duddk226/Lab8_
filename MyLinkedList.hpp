@@ -5,6 +5,7 @@
 #ifndef LAB8__MYLINKEDLIST_HPP
 #define LAB8__MYLINKEDLIST_HPP
 
+#include <iostream>
 #include "node.hpp"
 
 template<typename T>
@@ -63,12 +64,17 @@ void MyLinkedList<T>::insert(node<T> *prevdata, T data) {
     node<T> *temp = current->next;
     current->next = newNode;
     newNode->next = temp;
-
 }
+
 template<typename T>
 MyLinkedList<T>::~MyLinkedList() {
-
+    node<T> *current = head;
+    while(current!= nullptr){
+        node<T> *next = current->next;
+        cout<<"Deleting:" << current->data << endl;
+        delete current;
+        current = next;
+    }
 }
-
 
 #endif //LAB8__MYLINKEDLIST_HPP
